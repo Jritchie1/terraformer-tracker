@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Terraforming Mars: Base Game",
+    "id": "tfm",
+    "flavour": "In the 2400s, mankind begins to terraform the planet Mars.  Giant corporations, sponsored by the World Government on Earth initiate huge projects to make Mars habitable.",
+    "gameplay": "Required for all games of Terraforming Mars",
+    "releaseDate": "28/09/16"
+  },
+  {
+    "name": "Hellas and Elysium",
+    "id": "h&e",
+    "flavour": "Elysium takes players almost to the opposite side of Mars’ equator, with vast lowlands for oceans in the north and a dry, mineral-rich south.  Hellas, the southern wild, includes Mars’ south pole and the enormous Hellas crater that just begs to become a giant lake.",
+    "gameplay": "Hellas & Elysium is the first expansion for Terraforming Mars. It features two new game boards which can be played instead of the main game’s Tharsis map.",
+    "releaseDate": "16/08/17"
+  },
+  {
+    "name": "Venus Next",
+    "id": "nex",
+    "flavour": "In Venus Next, the World Government chooses to also fund the terraforming of Venus.",
+    "gameplay": "Venus Next adds new resources, milestones, awards, tags and terraforming parameters, for more paths to victory and more varied play.",
+    "releaseDate": "27/12/17"
+  },
+  {
+    "name": "Prelude",
+    "id": "pre",
+    "flavour": "As the megacorporations are getting ready to start the terraforming process, you now have the chance to make those early choices that will come to define your corporation and set the course for the future history of Mars.",
+    "gameplay": "In Prelude, you get to choose from Prelude cards that jumpstart the terraforming process or boost your corporation engine.",
+    "releaseDate": "22/08/18"
+  },
+  {
+    "name": "Colonies",
+    "id": "col",
+    "flavour": "Our world has widened before us. Corporations expand their operations to all corners of the solar system in pursuit of minerals and resources.",
+    "gameplay": "In Colonies lets you visit the outer solar system. It features colony tiles where you can build colonies and send your trade fleet.",
+    "releaseDate": "21/11/18"
+  },
+  {
+    "name": "Turmoil",
+    "id": "tur",
+    "flavour": "Turmoil takes players back to Mars, and the struggle for control and progress of human society on a big and dangerous planet.",
+    "gameplay": "The expansion includes new corporations, new projects, and the new Global Events, from dust storms to riots to rising alloy demand, giving you something to plan for 3 generations in advance.",
+    "releaseDate": "31/12/19"
+  }
+]

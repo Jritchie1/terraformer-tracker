@@ -1,5 +1,27 @@
-import logo from './logo.svg';
+import logo from './mars.png';
 import './App.css';
+import {Button} from "@mui/material";
+import Expansion from "./data/models/expansion";
+
+const expansions = require("./data/collections/expansions.json");
+let expansionCards = [];
+
+expansions.forEach((expansion, index) => {
+  let expansionCard = <Expansion
+      key={index}
+      name={expansion.name}
+      id={expansion.id}
+      flavour={expansion.flavour}
+      gameplay={expansion.gameplay}
+      releaseDate={expansion.releaseDate}
+      sx={{width: 300}}
+  >
+
+  </Expansion>;
+  expansionCards.push(expansionCard);
+})
+
+console.log(expansionCards);
 
 function App() {
   return (
@@ -7,16 +29,24 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Terraformer Tracker
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <Button>
+          New Game
+        </Button>
+        <Button>
+          Corporations
+        </Button>
+        <Button>
+          Preludes
+        </Button>
+        <Button>
+          Expansions
+        </Button>
+        <Button>
+          Cards
+        </Button>
+        {expansionCards}
       </header>
     </div>
   );
