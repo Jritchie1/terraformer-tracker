@@ -1,0 +1,21 @@
+[
+    {
+        "name": "Helion",
+        "id": "hel",
+        "flavour": "Developers of ultra-light solar sails, Helion now turns to the terraforming of Mars and other worlds.  It promises to be a rewarding business, as Helion has already made a working model of a soletta, focussing sunlight down to the frozen planet.",
+        "startingResources": [
+            {
+                "name": "megacredits",
+                "quantity": 42,
+                "production": 0
+            },
+            {
+                "name": "heat",
+                "quantity": 0,
+                "production": 3
+            }
+        ],
+        "effect": "You may use heat as megacredits.  You may not use megacredits as heat.",
+        "tags": ["Space"]
+    }
+]
