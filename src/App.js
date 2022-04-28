@@ -4,6 +4,16 @@ import {Button} from "@mui/material";
 import Expansion from "./data/models/expansion";
 
 const expansions = require("./data/collections/expansions.json");
+
+const dynamoRequest = new XMLHttpRequest();
+const getExpansions = 'https://4qwjmss1p1.execute-api.us-east-1.amazonaws.com/getExpansions';
+dynamoRequest.open("get", getExpansions);
+dynamoRequest.send();
+
+dynamoRequest.onreadystatechange = (e) => {
+  console.log(dynamoRequest);
+}
+
 let expansionCards = [];
 
 expansions.forEach((expansion, index) => {
@@ -20,8 +30,6 @@ expansions.forEach((expansion, index) => {
   </Expansion>;
   expansionCards.push(expansionCard);
 })
-
-console.log(expansionCards);
 
 function App() {
   return (

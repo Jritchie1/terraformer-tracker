@@ -6,6 +6,8 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  httpApi:
+    cors: true
   iam:
     role:
       statements:
@@ -29,15 +31,16 @@ functions:
           path: /addExpansion
           method: post
   getExpansion:
-    handler: src/handlers/get.expansion
+    handler: src/handlers/get.expansions
     events:
       - httpApi:
-          path: /getExpansion
+          path: /getExpansions
           method: get
 
 package:
   patterns:
     - '!node_modules/**'
+    - 'node_modules/uuid/**'
 
 resources:
   Resources:
