@@ -6,6 +6,14 @@ frameworkVersion: '3'
 provider:
   name: aws
   runtime: nodejs14.x
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:*
+          Resource:
+            - arn:aws:dynamodb:us-east-1:529952220313:table/TestTable
 
 functions:
   main:
@@ -14,6 +22,22 @@ functions:
       - httpApi:
           path: /
           method: get
+  addExpansion:
+    handler: src/handlers/add.expansion
+    events:
+      - httpApi:
+          path: /addExpansion
+          method: post
+  getExpansion:
+    handler: src/handlers/get.expansion
+    events:
+      - httpApi:
+          path: /getExpansion
+          method: get
+
+package:
+  patterns:
+    - '!node_modules/**'
 
 resources:
   Resources:
