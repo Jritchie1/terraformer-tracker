@@ -1,0 +1,14 @@
+service: terraformer-tracker
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  main:
+    handler: src/handlers/main.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
