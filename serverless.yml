@@ -41,7 +41,7 @@ functions:
     events:
       - httpApi:
           path: /deleteExpansions
-          method: post
+          method: delete
 
 package:
   patterns:

@@ -11,7 +11,7 @@ const deleteExpansions = async (event) => {
   try {
     const results = await dynamodb.scan({ TableName: "TestTable" }).promise();
     expansions = results.Items;
-    expansions.forEach(item => {
+    /*expansions.forEach(async (item) => {
         let params = {
             TableName: "TestTable",
             Key: {
@@ -21,16 +21,46 @@ const deleteExpansions = async (event) => {
         }
         console.log(params);
         try {
-            dynamodb.delete(params)
+            await dynamodb.delete(params).promise();
+            console.log("Delete");
         }
         catch (error) {
             console.log(error);
         }
-    })
+    })*/
   }
   catch (error) {
     console.log(error);
   }
+
+  const params = {
+    RequestItems: {
+      "TestTable": [
+
+      ]
+    }
+  };
+
+  expansions.forEach(item => {
+    console.log(item.id, typeof item.id);
+    let newItem = {
+      DeleteRequest: {
+        Key: {
+          HashKey: item.id
+        }
+      }
+    };
+    params.RequestItems.TestTable.push(newItem);
+  })
+
+  await dynamodb.batchWrite(params, function(err, data) {
+    if (err) {
+      console.log(err, err.stack);
+    }
+    else {
+      console.log(data);
+    }
+  }).promise();
 
   return {
     statusCode: 200,

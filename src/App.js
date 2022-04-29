@@ -22,7 +22,7 @@ function App() {
     const dynamoRequest = new XMLHttpRequest();
     const deleteExpansions = 'https://4qwjmss1p1.execute-api.us-east-1.amazonaws.com/deleteExpansions';
     
-    dynamoRequest.open("post", deleteExpansions);
+    dynamoRequest.open("delete", deleteExpansions);
     dynamoRequest.send();
 
     getAllExpansions();
