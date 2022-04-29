@@ -2,60 +2,87 @@ import logo from './mars.png';
 import './App.css';
 import {Button} from "@mui/material";
 import Expansion from "./data/models/expansion";
-
-const expansions = require("./data/collections/expansions.json");
-
-const dynamoRequest = new XMLHttpRequest();
-const getExpansions = 'https://4qwjmss1p1.execute-api.us-east-1.amazonaws.com/getExpansions';
-dynamoRequest.open("get", getExpansions);
-dynamoRequest.send();
-
-dynamoRequest.onreadystatechange = (e) => {
-  console.log(dynamoRequest);
-}
-
-let expansionCards = [];
-
-expansions.forEach((expansion, index) => {
-  let expansionCard = <Expansion
-      key={index}
-      name={expansion.name}
-      id={expansion.id}
-      flavour={expansion.flavour}
-      gameplay={expansion.gameplay}
-      releaseDate={expansion.releaseDate}
-      sx={{width: 300}}
-  >
-
-  </Expansion>;
-  expansionCards.push(expansionCard);
-})
+import React, {useState} from 'react';
 
 function App() {
+  let expansions = [];
+  const [expansionCards, setExpansionCards] = useState([])
+
+  const addExpansions = () => {
+    const dynamoRequest = new XMLHttpRequest();
+    const setExpansions = 'https://4qwjmss1p1.execute-api.us-east-1.amazonaws.com/addExpansions';
+    
+    dynamoRequest.open("post", setExpansions);
+    dynamoRequest.send();
+
+    getAllExpansions();
+  }
+
+  const deleteExpansions = () => {
+    const dynamoRequest = new XMLHttpRequest();
+    const deleteExpansions = 'https://4qwjmss1p1.execute-api.us-east-1.amazonaws.com/deleteExpansions';
+    
+    dynamoRequest.open("post", deleteExpansions);
+    dynamoRequest.send();
+
+    getAllExpansions();
+  }
+
+  const getAllExpansions = () => {
+    expansions = [];
+
+    const dynamoRequest = new XMLHttpRequest();
+    const getExpansions = 'https://4qwjmss1p1.execute-api.us-east-1.amazonaws.com/getExpansions';
+    
+    dynamoRequest.open("get", getExpansions);
+    dynamoRequest.send();
+    
+    dynamoRequest.onreadystatechange = (e) => {
+      try {
+        expansions = JSON.parse(dynamoRequest.responseText);
+
+        let cardArray = []
+
+        expansions.forEach((expansion, index) => {
+          let expansionCard = <Expansion
+              key={index}
+              name={expansion.expansion.name}
+              id={expansion.expansion.id}
+              flavour={expansion.expansion.flavour}
+              gameplay={expansion.expansion.gameplay}
+              releaseDate={expansion.expansion.releaseDate}
+              sx={{width: 300}}
+          />
+          cardArray.push(expansionCard);
+        })
+        
+        setExpansionCards(cardArray);
+      }
+      catch {
+        console.log(dynamoRequest.responseText);
+      }
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Terraformer Tracker
-        </p>
-        <Button>
-          New Game
+      <div className='header-title'>
+        <p>Terraformer Tracker</p>
+      </div>
+      <div className="header-controls">
+        <Button onClick={addExpansions}>
+          Add Expansions
         </Button>
-        <Button>
-          Corporations
+        <Button onClick={getAllExpansions}>
+          Get Expansions
         </Button>
-        <Button>
-          Preludes
+        <Button onClick={deleteExpansions}>
+          Clear Expansions
         </Button>
-        <Button>
-          Expansions
-        </Button>
-        <Button>
-          Cards
-        </Button>
+      </div>
+      <div className='body-card-display'>
         {expansionCards}
-      </header>
+      </div>
     </div>
   );
 }

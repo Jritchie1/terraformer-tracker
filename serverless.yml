@@ -24,18 +24,24 @@ functions:
       - httpApi:
           path: /
           method: get
-  addExpansion:
-    handler: src/handlers/add.expansion
+  addExpansions:
+    handler: src/handlers/add.expansions
     events:
       - httpApi:
-          path: /addExpansion
+          path: /addExpansions
           method: post
-  getExpansion:
+  getExpansions:
     handler: src/handlers/get.expansions
     events:
       - httpApi:
           path: /getExpansions
           method: get
+  deleteExpansions:
+    handler: src/handlers/delete.expansions
+    events:
+      - httpApi:
+          path: /deleteExpansions
+          method: post
 
 package:
   patterns:

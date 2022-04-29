@@ -2,7 +2,7 @@
 
 const AWS = require('aws-sdk');
 
-const getExpansions = async (event) => {
+const deleteExpansions = async (event) => {
 
   const dynamodb = new AWS.DynamoDB.DocumentClient();
 
@@ -11,6 +11,22 @@ const getExpansions = async (event) => {
   try {
     const results = await dynamodb.scan({ TableName: "TestTable" }).promise();
     expansions = results.Items;
+    expansions.forEach(item => {
+        let params = {
+            TableName: "TestTable",
+            Key: {
+                HashKey: item.id,
+                NumberRangeKey: 1
+            }
+        }
+        console.log(params);
+        try {
+            dynamodb.delete(params)
+        }
+        catch (error) {
+            console.log(error);
+        }
+    })
   }
   catch (error) {
     console.log(error);
@@ -27,5 +43,5 @@ const getExpansions = async (event) => {
 };
 
 module.exports = {
-  expansions: getExpansions
+  expansions: deleteExpansions
 }

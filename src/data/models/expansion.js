@@ -32,7 +32,6 @@ export default class Expansion extends React.Component {
                     </Typography>
                 </CardContent>
                 <CardActions>
-                    <Button size="small">Add</Button>
                     <Button size="small">Remove</Button>
                 </CardActions>
             </Card>

@@ -5,7 +5,7 @@ const AWS = require('aws-sdk');
 
 const expansions = require("../data/collections/expansions.json");
 
-const addExpansion = async (event) => {
+const addExpansions = async (event) => {
 
   const dynamodb = new AWS.DynamoDB.DocumentClient();
 
@@ -46,5 +46,5 @@ const addExpansion = async (event) => {
 };
 
 module.exports = {
-  expansion: addExpansion
+  expansions: addExpansions
 }
