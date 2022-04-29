@@ -42,11 +42,10 @@ const deleteExpansions = async (event) => {
   };
 
   expansions.forEach(item => {
-    console.log(item.id, typeof item.id);
     let newItem = {
       DeleteRequest: {
         Key: {
-          HashKey: item.id
+          id: item.id
         }
       }
     };
@@ -68,7 +67,7 @@ const deleteExpansions = async (event) => {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Credentials': true,
     },
-    body: JSON.stringify(expansions)
+    body: "Database cleared"
   };
 };
 
